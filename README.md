@@ -4,7 +4,7 @@
 
 Copiar el siguiente diseño web utilizando HTML y CSS de forma tal que la web se visualize correctamente en cualquier dispositivo (celular, tablet, laptop y monitor).
 
-![Web](https://raw.githubusercontent.com/walfonso/appclima/master/image/modelo-web.png) 
+![Web](https://raw.githubusercontent.com/walfonso/appclima/master/images/modelo-web.png) 
 
 El sitio debe ser responsive, priorizando el uso de Flexbox y debe tener una input para busqueda de ciudades como se visualiza en la imagen. Dicho input debe capturar el evento del teclado y realizar consultas a un API público de Clima (se puede utilizar cualquier API de clima las vista en la semana 12).
 
