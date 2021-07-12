@@ -11,10 +11,9 @@
     <header></header>
     <main>
       <section id="left">
-        
-         <div class="search">
-            <img src="images/search.png" alt="Lupa">
-            <input 
+        <div class="search">
+          <img src="images/search.png" alt="Lupa">
+          <input 
             type="search" 
             name="ciudad" 
             id="ciudad" 
@@ -23,11 +22,10 @@
             placeholder="Search for place ..."
           />
         </div>
-        <div>
-          <img src="" alt="">
-        </div>
-        <div>temperatura</div>
-        <div>dia y hora</div>
+        <div>      
+          <ul id="cityList" class="character"></ul>
+        </div> 
+        <div id="today" class="today"></div>
         <div class="container">
           <img src="images/rosario.jpg" />
           <div class="text"><h2>Rosario, AR</h2></div>
@@ -38,7 +36,7 @@
         <div id="header-right">
           <div><h2>Today  Week</h2></div>
           <div><h2>ºC   ºF</h2></div>
-          <div><img src="" alt=""></div>
+          <div id="user" class="user"></div>
         </div>
         <div id="days">
           <div class="day">lun</div>
@@ -63,5 +61,6 @@
       </section>
     </main>
     <footer></footer>
+    <script src="js/app.js"></script>
 </body>
 </html>
