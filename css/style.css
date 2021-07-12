@@ -45,16 +45,17 @@ header{
   display: flex;
   flex-wrap: wrap;
   flex: 2 1 auto;
-
 }
 
 .day{
   display: flex;
+  flex: 1 1 auto;
   margin: 10px;
-  border: 2px solid black;
   padding: 10px;
-
+  border-radius: 10px 10px;
+  background-color: #ffff;  
 }
+
 #Highlights1{
   display: flex;
   justify-content: space-around;
@@ -70,7 +71,8 @@ header{
 .highlights{
   display:flex;
   margin: 10px;
-  border: 2px solid black;
+  border-radius: 15px 15px;
+  background-color: #ffff;
   padding: 50px;
 
 }
@@ -106,4 +108,15 @@ align-items: center;
   border-radius: 5px;
   width: 50px;
   height: 50px;
+}
+
+#weat{
+  display: flex;
+  flex-direction: row;
+  align-items: center;  
+}
+
+#weat img{
+  width: 25px;
+  height: 25px;
 }

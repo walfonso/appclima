@@ -6,6 +6,10 @@ var user = document.querySelector('#user');
 var url= `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=4372ee354f2da2278ed2950dc4c3f288`;
 var citys = document.querySelector('#citys'); 
 var text = document.querySelector('#text');
+var cityList = document.querySelector('#cityList');
+var city = document.querySelector('#ciudad').value;
+var weat = document.querySelector('#weat');
+
 //console.log(url+apiKey);
 
 function consultUser (){
@@ -20,9 +24,10 @@ function consultUser (){
 };
 function consultApi (){
 try {
-  var cityList = document.querySelector('#cityList');
-  var city = document.querySelector('#ciudad').value;
+  //var cityList = document.querySelector('#cityList');
+  //var city = document.querySelector('#ciudad').value;
   cityList.innerHTML = '';
+  var urlweather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4372ee354f2da2278ed2950dc4c3f288`;
   var url= `https://api.openweathermap.org/data/2.5/find?q=${city}&units=metric&lang=sp&appid=4372ee354f2da2278ed2950dc4c3f288`;
   fetch(url)
   .then(res => res.json())
@@ -49,9 +54,14 @@ try {
   var fecha = convertDate(utcDate);
   console.log("conver:  "+convertDate(utcDate));
   today.innerHTML = `
-    <img src="https://openweathermap.org/img/wn/${data.list[indice].weather['0'].icon}@2x.png"></img> </p> 
+    <img src="https://openweathermap.org/img/wn/${data.list[indice].weather['0'].icon}@2x.png"></img> 
     <p><h2>${data.list[indice].main.temp} ºC</h2></p> 
     <p><h2>${fecha}</h2></p> 
+     
+  `
+  weat.innerHTML = `
+    <img src="https://openweathermap.org/img/wn/${data.list[indice].weather['0'].icon}@2x.png"></img> </p>
+    <p>${data.list[indice].weather['0'].description}</p>
   `
   text.innerHTML = `
     <h2>${data.list[indice].name}, ${data.list[indice].sys.country} </h2> 
