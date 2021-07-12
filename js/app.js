@@ -4,8 +4,8 @@ var city = document.querySelector('#ciudad').value;
 var today = document.querySelector('#today');
 var user = document.querySelector('#user');
 var url= `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=4372ee354f2da2278ed2950dc4c3f288`;
-
-
+var citys = document.querySelector('#citys'); 
+var text = document.querySelector('#text');
 //console.log(url+apiKey);
 
 function consultUser (){
@@ -27,30 +27,37 @@ try {
   fetch(url)
   .then(res => res.json())
   .then(data => {
-      console.log(data)
-      for (var j = 0; j < data.list.length; j++) {
-      var listItem = document.createElement('li');
-      console.log(listItem);
-      listItem.textContent = data.list[j].name +', '+ data.list[j].sys.country;
-      listItem.setAttribute("value", j ); 
-      cityList.append(listItem);    
-    }
-// Selecciona la ciudad y carga datos columna Izquierda
-var item = document.querySelector('#cityList');
-item.addEventListener("click", function (e) {
+    console.log(data)
+    for (var j = 0; j < data.list.length; j++) {
+    var listItem = document.createElement('li');
+    console.log(listItem);
+    listItem.textContent = data.list[j].name +', '+ data.list[j].sys.country;
+    listItem.setAttribute("value", j ); 
+    cityList.append(listItem);    
+  }
+  // Selecciona la ciudad y carga datos columna Izquierda
+  var item = document.querySelector('#cityList');
+  item.addEventListener("click", function (e) {
   console.log(e.target.value);
   console.log(e.target.textContent);
   var indice = e.target.value;
+  //citys.removeChild(cityList);
+
   var ciudad = document.querySelector('#ciudad');
   ciudad.value= e.target.textContent;
+  var utcDate = data.list[indice].dt;
+  var fecha = convertDate(utcDate);
+  console.log("conver:  "+convertDate(utcDate));
   today.innerHTML = `
-      <img src="https://openweathermap.org/img/wn/${data.list[indice].weather['0'].icon}@2x.png"></img> </p> 
-      <p><h2>${data.list[indice].main.temp}</h2></p> 
-      <p>${data.list[indice].name}, ${data.list[indice].sys.country}</p> 
-      
-    `
+    <img src="https://openweathermap.org/img/wn/${data.list[indice].weather['0'].icon}@2x.png"></img> </p> 
+    <p><h2>${data.list[indice].main.temp} ºC</h2></p> 
+    <p><h2>${fecha}</h2></p> 
+  `
+  text.innerHTML = `
+    <h2>${data.list[indice].name}, ${data.list[indice].sys.country} </h2> 
+  `    
 });
-  //cityList.removeChild();
+    
   })
  
 } catch (err) {
@@ -79,9 +86,34 @@ var url= `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metri
       <p>Temp. Mínima:${data.list['2'].main.temp_min} </p>
       
     `
+
     return data;
   })
 };
+
+//convert date
+function convertDate(UnixTime){
+  var unixTimestamp = UnixTime;
+  var date = new Date(unixTimestamp*1000);
+  var weekday = new Array(7);
+  weekday[0] = "Sun";  
+  weekday[1] = "Mon";
+  weekday[2] = "Tue";
+  weekday[3] = "Wed";
+  weekday[4] = "Thu";
+  weekday[5] = "Fri";
+  weekday[6] = "Sat";
+
+  console.log("Unix Timestamp:",unixTimestamp)
+  console.log("Date Timestamp:",date.getTime())
+  var day = weekday[date.getDay()];
+  var time = date.getHours()+":"+date.getMinutes().toString();
+  var fecha= day+""+time;
+  return fecha;  
+}
+//
+
+
 
 //debounce
 //let counter = 0;
@@ -102,6 +134,8 @@ function debounce(fn, d) {
         }, d)
     }
 }
+
+
 
 const debounceForData = debounce(consultApi, 600);
 
