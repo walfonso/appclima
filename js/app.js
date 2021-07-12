@@ -1,14 +1,15 @@
 var apiKey= '4372ee354f2da2278ed2950dc4c3f288';
 var url2= 'http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=4372ee354f2da2278ed2950dc4c3f288';
-var city = document.querySelector('#ciudad').value;
+var city = document.querySelector('#ciudad').value="Rosario";
 var today = document.querySelector('#today');
 var user = document.querySelector('#user');
 var url= `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=4372ee354f2da2278ed2950dc4c3f288`;
 var citys = document.querySelector('#citys'); 
 var text = document.querySelector('#text');
-var cityList = document.querySelector('#cityList');
-var city = document.querySelector('#ciudad').value;
+
+
 var weat = document.querySelector('#weat');
+var humedity = document.querySelector('#humedity');
 
 //console.log(url+apiKey);
 
@@ -24,16 +25,21 @@ function consultUser (){
 };
 function consultApi (){
 try {
-  //var cityList = document.querySelector('#cityList');
-  //var city = document.querySelector('#ciudad').value;
+  var cityList = document.querySelector('#cityList');
+  var city = document.querySelector('#ciudad').value;
   cityList.innerHTML = '';
+  if (city==""){
+    console.log('city vacio');
+    return;
+  }
   var urlweather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4372ee354f2da2278ed2950dc4c3f288`;
   var url= `https://api.openweathermap.org/data/2.5/find?q=${city}&units=metric&lang=sp&appid=4372ee354f2da2278ed2950dc4c3f288`;
   fetch(url)
   .then(res => res.json())
   .then(data => {
     console.log(data)
-    for (var j = 0; j < data.list.length; j++) {
+   
+  for (var j = 0; j < data.list.length; j++) {
     var listItem = document.createElement('li');
     console.log(listItem);
     listItem.textContent = data.list[j].name +', '+ data.list[j].sys.country;
@@ -48,7 +54,7 @@ try {
   var indice = e.target.value;
   //citys.removeChild(cityList);
 
-  var ciudad = document.querySelector('#ciudad');
+  //var ciudad = document.querySelector('#ciudad');
   ciudad.value= e.target.textContent;
   var utcDate = data.list[indice].dt;
   var fecha = convertDate(utcDate);
@@ -65,7 +71,10 @@ try {
   `
   text.innerHTML = `
     <h2>${data.list[indice].name}, ${data.list[indice].sys.country} </h2> 
-  `    
+  `   
+  humedity.innerHTML = `
+    <h2>${data.list[indice].main.humidity} </h2> 
+  `   
 });
     
   })
@@ -118,7 +127,7 @@ function convertDate(UnixTime){
   console.log("Date Timestamp:",date.getTime())
   var day = weekday[date.getDay()];
   var time = date.getHours()+":"+date.getMinutes().toString();
-  var fecha= day+""+time;
+  var fecha= day+" "+time;
   return fecha;  
 }
 //
@@ -132,9 +141,8 @@ function convertDate(UnixTime){
 //    console.log("Fetching Data...", counter++);
 //}
 
-//const debounce = function (fn, d) {
-
-function debounce(fn, d) {  
+const debounce = function (fn, d) {
+// 
   let timer;
     return function () {
     let context = this, args = arguments;
