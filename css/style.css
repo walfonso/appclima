@@ -82,7 +82,26 @@ header{
     text-align: center;
     margin-top: 0px;
     margin-bottom: 5px;
-    font-weight: 500;  }
+    font-weight: 500;  
+  }
+
+  .text-center {
+      text-align: center;
+  }
+
+  .text-left {
+    text-align: left;
+}
+
+.color-gris {color:rgb(214 215 218 / 97%);}
+
+  .font-4em {font-size: 4em;}
+  .font-3em {font-size: 3em;}
+  .font-35em {font-size: 3.5em;}
+  .font-2em {font-size: 2em;}
+  .font-25em {font-size: 2.5em;}
+  .font-1em {font-size: 1em;}
+  .font-15em {font-size: 1.5em;}
 
 #cityList li a {
   border: 1px solid #ddd;
@@ -132,29 +151,31 @@ header{
 }
 
 #Highlights1{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
 }
 
 #Highlights2{
   display: flex;
-  justify-content:flex-start;
-  flex-wrap: wrap;
-}
-
-.highlights{
-  display:flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items:flex-start;
-  flex: 1 1 auto;
-  width: 20%;
-  height:70%;
+  justify-content: flex-start;
   flex-wrap: nowrap;
-  margin: 10px;
-  border-radius: 15px 15px;
-  background-color: #ffff;
-  padding: 10px;
+ 
+}
+
+ .highlights {
+    width: 25%;
+    height: auto;
+
+    margin: 10px;
+    border-radius: 15px 15px;
+    background-color: #ffff;
+    padding: 10px 20px;
+    height: 200px;
 
 }
+
+h2 {margin-top: 0px;}
 
 .details{
   display: flex;
@@ -194,6 +215,9 @@ header{
     text-align: center;
 }
 
+.margen-top30 {
+    margin-top: 30px;
+}
 .text{
   position: absolute;
   top: 50%;
@@ -227,3 +251,30 @@ align-items: center;
 }
 
 .display-none {display: none;}
+
+
+
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+ 
+}
+
+/* Smartphones (landscape) */
+@media only screen and (min-width: 321px) {
+}
+
+@media (min-width: 1024px) and (max-width: 1920px) {
+  .c-layout-footer-10 {
+    padding: 120px 0 120px 0 !important;
+  }
+}
+
+
+@media (min-width: 1368px) {
+
+}
+
+@media (min-width: 374px) and (max-width: 860px) {
+  #left {width: 800px;}
+
+}
