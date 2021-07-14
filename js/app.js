@@ -32,18 +32,25 @@ try {
     console.log('city vacio');
     return;
   }
+  var urlpro = `https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&include=daily&appid=4372ee354f2da2278ed2950dc4c3f288`;
   var urlweather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4372ee354f2da2278ed2950dc4c3f288`;
   var url= `https://api.openweathermap.org/data/2.5/find?q=${city}&units=metric&lang=sp&appid=4372ee354f2da2278ed2950dc4c3f288`;
   fetch(url)
   .then(res => res.json())
   .then(data => {
     console.log(data)
-   
+   if ( data.cod==400 || data.cod==401 ){
+      console.log("Vacio");
+      alert("Ciudad no encontrada");
+      return;
+    }
   for (var j = 0; j < data.list.length; j++) {
     var listItem = document.createElement('li');
     console.log(listItem);
     listItem.textContent = data.list[j].name +', '+ data.list[j].sys.country;
     listItem.setAttribute("value", j ); 
+    document.getElementById('citys').style.display ='block';
+
     cityList.append(listItem);    
   }
   // Selecciona la ciudad y carga datos columna Izquierda
@@ -52,6 +59,7 @@ try {
   console.log(e.target.value);
   console.log(e.target.textContent);
   var indice = e.target.value;
+  document.getElementById('citys').style.display ='none';
   //citys.removeChild(cityList);
 
   //var ciudad = document.querySelector('#ciudad');
@@ -60,13 +68,13 @@ try {
   var fecha = convertDate(utcDate);
   console.log("conver:  "+convertDate(utcDate));
   today.innerHTML = `
-    <img src="https://openweathermap.org/img/wn/${data.list[indice].weather['0'].icon}@2x.png"></img> 
-    <p><h2>${data.list[indice].main.temp} ºC</h2></p> 
-    <p><h2>${fecha}</h2></p> 
+    <img src="https://openweathermap.org/img/wn/${data.list[indice].weather['0'].icon}@4x.png"></img> 
+    <p><h2 class="grados">${data.list[indice].main.temp.toFixed()} ºC</h2></p> 
+    <p><h2 class="fecha">${fecha}</h2></p> 
      
   `
   weat.innerHTML = `
-    <img src="https://openweathermap.org/img/wn/${data.list[indice].weather['0'].icon}@2x.png"></img> </p>
+    <img src="https://openweathermap.org/img/wn/${data.list[indice].weather['0'].icon}.png"></img> </p>
     <p>${data.list[indice].weather['0'].description}</p>
   `
   text.innerHTML = `
@@ -88,9 +96,10 @@ try {
 
 // Pruebas
 function queryClima (){
-var city = document.querySelector('#ciudad').value;
-var url= `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=4372ee354f2da2278ed2950dc4c3f288`;
-  fetch(url)
+  var city = document.querySelector('#ciudad').value;
+  var url= `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=4372ee354f2da2278ed2950dc4c3f288`;
+  var urlpro = `https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&include=daily&appid=4372ee354f2da2278ed2950dc4c3f288`;
+  fetch(urlpro)
   .then(res => res.json())
   .then(data => {
     console.log(data)
@@ -106,7 +115,7 @@ var url= `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metri
       
     `
 
-    return data;
+    
   })
 };
 
@@ -161,6 +170,7 @@ const debounceForData = debounce(consultApi, 600);
 
 
 //console.log(city.value);
-consultUser ();
-consultApi();
+//consultUser ();
+//consultApi();
 //debounce(consultApi, 600);
+queryClima();

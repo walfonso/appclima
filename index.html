@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,61 +8,133 @@
   <title>Aplicación del Clima</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <header></header>
-    <main>
-      <section id="left">
-        <div class="search">
-          <img src="images/search.png" alt="Lupa">
-          <input 
-            type="search" 
-            name="ciudad" 
-            id="ciudad" 
-            onkeyup="debounceForData()" 
-            value=""
-            placeholder="Search for place ..."
-          />
+  <header></header>
+  <main>
+    <section id="left">
+      <div class="search">
+        <img src="images/search.png" alt="Lupa">
+        <input type="search" name="ciudad" id="ciudad" onkeyup="debounceForData()" value=""
+          placeholder="Search for place ..." />
+      </div>
+      <div id="citys">
+        <ul id="cityList" class="character"></ul>
+      </div>
+      <div id="today" class="today"></div>
+      <div id="weat"></div>
+      <div class="container">
+        <img src="images/rosario.jpg" />
+        <div id="text" class="text"></div>
+      </div>
+    </section>
+    <section id="right">
+      <div id="header-right">
+        <div>
+          <h2>Today Week</h2>
         </div>
-        <div id="citys">      
-          <ul id="cityList" class="character"></ul>
-        </div> 
-        <div id="today" class="today"></div>
-        <div id="weat"></div>
-        <div class="container">
-          <img src="images/rosario.jpg" />
-          <div id="text" class="text"></div>
+        <div>
+          <h2>ºC ºF</h2>
         </div>
-        
-      </section>
-      <section id="right">
-        <div id="header-right">
-          <div><h2>Today  Week</h2></div>
-          <div><h2>ºC   ºF</h2></div>
-          <div id="user" class="user"></div>
+        <div id="user" class="user"></div>
+      </div>
+      <div id="days">
+        <div class="day">
+          <p class="descClima">Lun</p>
+          <p class="descClima"><img src="https://openweathermap.org/img/wn/04n.png"></p>
+          <p class="descClima">15º -3º</p>
         </div>
-        <div id="days">
-          <div class="day">lun</div>
-          <div class="day">mar</div>
-          <div class="day">mier</div>
-          <div class="day">jue</div>
-          <div class="day">vie</div>
-          <div class="day">sab</div>
-          <div class="day">dom</div>
+        <div class="day">
+          <p class="descClima">Lun</p>
+          <p class="descClima"><img src="https://openweathermap.org/img/wn/04n.png"></p>
+          <p class="descClima">15º -3º</p>
         </div>
-        <h2>Today's Highlights</h2>
-        <div id="Highlights1">
-          <div class="highlights">UV Index</div>
-          <div class="highlights">Wind Status</div>
-          <div class="highlights">Sunrise & Sunset</div>
+        <div class="day">
+          <p class="descClima">Lun</p>
+          <p class="descClima"><img src="https://openweathermap.org/img/wn/04n.png"></p>
+          <p class="descClima">15º -3º</p>            
         </div>
-        <div id="Highlights2">
-          <div id="humedity" class="highlights">Humedity</div>
-          <div class="highlights">Visibility</div>
-          <div class="highlights">air Quality</div>
-        </div>  
-      </section>
-    </main>
-    <footer></footer>
-    <script src="js/app.js"></script>
+        <div class="day">
+          <p class="descClima">Lun</p>
+          <p class="descClima"><img src="https://openweathermap.org/img/wn/04n.png"></p>
+          <p class="descClima">15º -3º</p>
+        </div>
+        <div class="day">
+          <p class="descClima">Lun</p>
+          <p class="descClima"><img src="https://openweathermap.org/img/wn/04n.png"></p>
+          <p class="descClima">15º -3º</p>
+        </div>
+        <div class="day">
+          <p class="descClima">Lun</p>
+          <p class="descClima"><img src="https://openweathermap.org/img/wn/04n.png"></p>
+          <p class="descClima">15º -3º</p>
+        </div>
+        <div class="day">
+          <p class="descClima">Lun</p>
+          <p class="descClima"><img src="https://openweathermap.org/img/wn/04n.png"></p>
+          <p class="descClima">15º -3º</p>            
+        </div>      </div>
+      <h2>Today's Highlights</h2>
+      <div id="Highlights1">
+        <div id="uvIndex" class="highlights">
+          <h3>UV Index</h3>
+          <p id="uvtoday"></p>
+          <div class="details">
+            <p>UV</p>
+            <img src="images/mal.png" alt="Normal">
+          </div>
+        </div>
+        <div id="windStatus" class="highlights">
+          <h3>Wind Status</h3>
+          <p id="windtoday"></p>
+          <div class="details">
+            <p>Wind</p>
+            <img src="images/mal.png" alt="Normal">
+          </div>
+        </div>
+        <div id="sriseSet" class="highlights">
+          <h3>Sunrise & Sunset</h3>
+          <div class="details">
+            <img src="images/sunrise.png" alt="Sunset">
+            <h3>8:20<h3>
+          </div>
+          <div class="details">
+            <img src="images/sunset.png" alt="Sunset">
+            <h3>18:20<h3>
+          </div>
+
+        </div>
+      </div>
+      <div id="Highlights2">
+        <div id="humedity" class="highlights">
+          <h3>Humidity</h3>
+          <p id="humtoday">%</p>
+          <div class="details">
+            <p>Normal</p>
+            <img src="images/normal.png" alt="Normal">
+          </div>
+        </div>
+        <div id="Visibility" class="highlights">
+          <h3>Visibility</h3>
+          <p id="vistoday"></p>
+          <div class="details">
+            <p>Average</p>
+            <img src="images/triste.png" alt="Normal">
+          </div>
+        </div>
+        <div id="airQuality" class="highlights">
+          <h3>Air Quality</h3>
+          <p id="airtoday"></p>
+          <div class="details">
+            <p>Unhealthy</p>
+            <img src="images/mal.png" alt="Normal">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+  <script src="js/app.js"></script>
 </body>
+
 </html>
