@@ -250,6 +250,11 @@ align-items: center;
   height: 25px;
 }
 
+#sunrs img{
+  width: 20%;
+  height: 20%;
+}
+
 .display-none {display: none;}
 
 
