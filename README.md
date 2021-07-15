@@ -20,6 +20,11 @@ El codigo debe ser desarrollado con:
 
 
 
+
+Funcionalidades:
+- [x] Georeferenciación: Si bloqueada, carga Rosario por defecto.  
+- [x] Búsqueda incremental por nombre de ciudad
+
 ## Vista Online
 
 View the game hosted on [Github Pages](https://walfonso.github.io/appclima/). 

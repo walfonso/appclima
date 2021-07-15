@@ -304,11 +304,11 @@ function viewClima (position) {
 	var lon = position.coords.longitude;	//guardamos la longitud
 	var lat = position.coords.latitude;		//guardamos la latitud
   queryClima(position.coords.latitude, position.coords.longitude);
-	alert("tus coordenadas son :"+""+lat+""+""+lon );
+	
 }
 
 function ViewError (error) {
-	alert(error.code);
+	queryDefault();
 }	
 //
 
