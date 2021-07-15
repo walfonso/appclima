@@ -259,6 +259,7 @@ align-items: center;
 .display-none {display: none;}
 
 
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 580px) {
  
   main {
@@ -302,6 +303,7 @@ align-items: center;
   }  
 }
 
+
 /* Smartphones (landscape) */
 @media only screen and (min-width: 321px) {
 }
@@ -318,3 +320,7 @@ align-items: center;
   
   
   }
+
+.mains{
+  width: max-content;
+}
