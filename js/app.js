@@ -108,7 +108,7 @@ function queryDefault() {
       <p class="descClima text-left color-gris ">Visibility</p>
       <p class="descClima text-left font-3em" style="padding: 20px 0; margin-bottom: 0px;">${data.current.visibility.toFixed()} m</p>
       <div class="">
-        <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Normal <img src="images/normal.png" alt="Normal"
+        <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Average <img src="images/triste.png" alt="Normal"
           style="width: 20px;vertical-align: bottom;">
       </div>
     `
@@ -157,6 +157,10 @@ function queryClima(lat, lon) {
       <p><h2 class="grados">${data.current.temp.toFixed()} ºC</h2></p> 
       <p><h2 class="fecha">${fecha}</h2></p> 
     `
+       weatone.innerHTML = `
+      <img src="images/rain.png"></img> 
+      <p>Rain: ${data.daily['0'].pop}%</p>
+    `
       weat.innerHTML = `
       <img src="https://openweathermap.org/img/wn/${data.current.weather['0'].icon}.png"></img> </p>
       <p>${data.current.weather['0'].description}</p>
@@ -167,11 +171,11 @@ function queryClima(lat, lon) {
     `
       uvindex.innerHTML = `
       <p class="descClima text-left color-gris ">UV Index</p>
-      <p class="descClima text-left font-3em" style="    padding: 20px 0; margin-bottom: 0px;">${data.current.uvi.toFixed()} %</p>
-      <div class="">
-        <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Normal <img src="images/normal.png" alt="Normal"
-          style="width: 20px;vertical-align: bottom;">
+      <div>
+        <img src="images/uvi.png" alt="Sunset">
       </div>
+      <p class="descClima text-left font-3em" style="    padding: 20px 0; margin-bottom: 0px; text-align: center;
+       padding: 20px 0; margin-bottom: 0px;">${data.current.uvi.toFixed()}</p>
     `
       windstatus.innerHTML = `
       <p class="descClima text-left color-gris ">Wind Status</p>
@@ -289,6 +293,26 @@ function convertTime(UnixTime) {
   return time;
 }
 
+// Geolocalizacion
+function loadLocation () {
+	//inicializamos la funcion y definimos  el tiempo maximo ,las funciones de error y exito.
+	navigator.geolocation.getCurrentPosition(viewClima,ViewError,{timeout:1000});
+}
+
+//Funcion de exito
+function viewClima (position) {
+	var lon = position.coords.longitude;	//guardamos la longitud
+	var lat = position.coords.latitude;		//guardamos la latitud
+  queryClima(position.coords.latitude, position.coords.longitude);
+	alert("tus coordenadas son :"+""+lat+""+""+lon );
+}
+
+function ViewError (error) {
+	alert(error.code);
+}	
+//
+
+
 //debounce
 
 const debounce = function (fn, d) {
@@ -303,9 +327,10 @@ const debounce = function (fn, d) {
 }
 
 const debounceForData = debounce(queryApi, 600);
-
+loadLocation ();
 queryUser();
-queryDefault();
+
+//queryDefault();
 
 setTimeout(() => {
   var mains = document.getElementById('mains');
