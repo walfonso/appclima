@@ -280,9 +280,8 @@ const debounceForData = debounce(queryApi, 600);
 
 queryUser();
 queryDefault();
-/*
+
 setTimeout(() => {
   var mains = document.getElementById('mains');
   mains.classList.add('mains');
 }, 3000);
-*/
