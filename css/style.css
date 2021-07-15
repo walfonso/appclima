@@ -26,7 +26,7 @@ header{
 #left{
   display: flex;
   flex-direction: column;
-  width:15%;
+  width:20%;
   flex: 1 1 auto;
   background-color: rgb(255, 255, 255);  
   border-top-left-radius: 50px;
@@ -127,7 +127,7 @@ header{
 #right{
  display: flex;
   flex-direction: column;
-  width: 65%;
+  width: 60%;
   flex: 1 1 auto;
   flex-wrap: wrap;
   background-color: rgb(246, 246, 248);
