@@ -22,7 +22,7 @@ El codigo debe ser desarrollado con:
 
 
 Funcionalidades:
-- [x] Georeferenciación: Si bloqueada, carga Rosario por defecto.  
+- [x] Georeferenciación: Si es bloqueada, carga en ciudad Rosario por defecto.  
 - [x] Búsqueda incremental por nombre de ciudad
 
 ## Vista Online

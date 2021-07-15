@@ -25,8 +25,6 @@ function queryUser() {
     })
 };
 
-
-
 // Carga Inicial por defecto Rosario, AR
 function queryDefault() {
   var city = document.querySelector('#ciudad').value;
@@ -83,46 +81,46 @@ function queryDefault() {
     `
       windstatus.innerHTML = `
       <p class="descClima text-left color-gris ">Wind Status</p>
-      <p class="descClima text-left font-3em" style="padding: 20px 0; margin-bottom: 0px;">${data.current.wind_speed} Km/h</p>
-      <div class="">
-        <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Normal <img src="images/normal.png" alt="Normal"
-          style="width: 20px;vertical-align: bottom;">
+      <p class="descClima text-left font-3em" style="padding: 30px 0; margin-bottom: 0px;">${data.current.wind_speed} Km/h</p>
+      <div  class="descr">
+        <p style="margin-top: 0px; font-weight: 500; font-size: 1em"><img src="images/wind.png" alt="Normal"
+          style="width: 25px;vertical-align: bottom;">
       </div>
     `
       sunrs.innerHTML = `
       <p class="descClima text-left color-gris ">Sunrise & Sunset</p>
+      <p class="descClima text-left font-1em" style="    padding: 30px 0; margin-bottom: 0px;">
       <img src="images/sunrise.png" alt="Sunset">
-      <p class="descClima text-left font-1em" style="    padding: 20px 0; margin-bottom: 0px;">${sunr}</p>
-      <img src="images/sunset.png" alt="Sunset">
-      <p class="descClima text-left font-1em" style="    padding: 20px 0; margin-bottom: 0px;">${suns}</p>
+      <label class="labels">${suns}</label>
+      </p>
+      <p class="descClima text-left font-1em" style="    padding: 30px 0; margin-bottom: 0px;">
+        <img src="images/sunset.png" alt="Sunset"><label class="labels">${suns}</label></p>
     `
       humidity.innerHTML = `
       <p class="descClima text-left color-gris ">Humidity</p>
-      <p class="descClima text-left font-3em" style="padding: 20px 0; margin-bottom: 0px;">${data.current.humidity.toFixed()} %</p>
-      <div class="">
+      <p class="descClima text-left font-3em" style="padding: 30px 0; margin-bottom: 0px;">${data.current.humidity.toFixed()} %</p>
+      <div  class="descr">
         <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Normal <img src="images/normal.png" alt="Normal"
           style="width: 20px;vertical-align: bottom;">
       </div>
     `
       visibility.innerHTML = `
       <p class="descClima text-left color-gris ">Visibility</p>
-      <p class="descClima text-left font-3em" style="padding: 20px 0; margin-bottom: 0px;">${data.current.visibility.toFixed()} m</p>
-      <div class="">
+      <p class="descClima text-left font-3em" style="padding: 30px 0; margin-bottom: 0px;">${data.current.visibility.toFixed()} m</p>
+      <div  class="descr">
         <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Average <img src="images/triste.png" alt="Normal"
           style="width: 20px;vertical-align: bottom;">
       </div>
     `
       airquality.innerHTML = `
       <p class="descClima text-left color-gris ">Air Quality</p>
-      <p class="descClima text-left font-3em" style="padding: 20px 0; margin-bottom: 0px;">${data.current.pressure} Hpa</p>
-      <div class="">
+      <p class="descClima text-left font-3em" style="padding: 30px 0; margin-bottom: 0px;">${data.current.pressure} Hpa</p>
+      <div  class="descr">
         <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Unhealthy <img src="images/mal.png" alt="Normal"
         style="width: 20px;vertical-align: bottom;">
       </div>
     `
-
-
-    })
+  })
 };
 //
 
@@ -157,10 +155,6 @@ function queryClima(lat, lon) {
       <p><h2 class="grados">${data.current.temp.toFixed()} ºC</h2></p> 
       <p><h2 class="fecha">${fecha}</h2></p> 
     `
-       weatone.innerHTML = `
-      <img src="images/rain.png"></img> 
-      <p>Rain: ${data.daily['0'].pop}%</p>
-    `
       weat.innerHTML = `
       <img src="https://openweathermap.org/img/wn/${data.current.weather['0'].icon}.png"></img> </p>
       <p>${data.current.weather['0'].description}</p>
@@ -176,21 +170,24 @@ function queryClima(lat, lon) {
       </div>
       <p class="descClima text-left font-3em" style="    padding: 20px 0; margin-bottom: 0px; text-align: center;
        padding: 20px 0; margin-bottom: 0px;">${data.current.uvi.toFixed()}</p>
+     
     `
       windstatus.innerHTML = `
       <p class="descClima text-left color-gris ">Wind Status</p>
       <p class="descClima text-left font-3em" style="padding: 20px 0; margin-bottom: 0px;">${data.current.wind_speed} Km/h</p>
       <div class="">
-        <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Normal <img src="images/normal.png" alt="Normal"
+        <p style="margin-top: 0px; font-weight: 500; font-size: 1em"><img src="images/wind.png" alt="Normal"
           style="width: 20px;vertical-align: bottom;">
       </div>
     `
       sunrs.innerHTML = `
       <p class="descClima text-left color-gris ">Sunrise & Sunset</p>
+      <p class="descClima text-left font-1em" style="    padding: 30px 0; margin-bottom: 0px;">
       <img src="images/sunrise.png" alt="Sunset">
-      <p class="descClima text-left font-1em" style="    padding: 20px 0; margin-bottom: 0px;">${sunr}</p>
-      <img src="images/sunset.png" alt="Sunset">
-      <p class="descClima text-left font-1em" style="    padding: 20px 0; margin-bottom: 0px;">${suns}</p>
+      <label class="labels">${suns}</label>
+      </p>
+      <p class="descClima text-left font-1em" style="    padding: 30px 0; margin-bottom: 0px;">
+      <img src="images/sunset.png" alt="Sunset"><label class="labels">${suns}</label></p>
     `
       humidity.innerHTML = `
       <p class="descClima text-left color-gris ">Humidity</p>
@@ -312,9 +309,7 @@ function ViewError (error) {
 }	
 //
 
-
 //debounce
-
 const debounce = function (fn, d) {
   var timer;
   return function () {
@@ -329,8 +324,6 @@ const debounce = function (fn, d) {
 const debounceForData = debounce(queryApi, 600);
 loadLocation ();
 queryUser();
-
-//queryDefault();
 
 setTimeout(() => {
   var mains = document.getElementById('mains');

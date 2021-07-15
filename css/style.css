@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
 
-
-
 body{
   display: flex;
   justify-content: center;
@@ -35,34 +33,32 @@ header{
 }
 
 .search img{
-    width: 15px;
-    height: 15px;
-    float: left;
-    vertical-align: middle;
-    padding: 5px 0;
+  width: 15px;
+  height: 15px;
+  float: left;
+  vertical-align: middle;
+  padding: 5px 0;
 }
 
 .search {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .search input {
-    border: none; 
-    font-weight: 700; 
-    height: 20px; 
-    padding-left: 5px;
-    margin-left: 2%;
-  }
-
+  border: none; 
+  font-weight: 700; 
+  height: 20px; 
+  padding-left: 5px;
+  margin-left: 2%;
+}
 
 .character {
-    list-style-type: none;
-    background-color: #eaeaea;
-    padding: 10px 20px;
-    display: grid;
-    
-    text-align: left;
+  list-style-type: none;
+  background-color: #eaeaea;
+  padding: 10px 20px;
+  display: grid;
+  text-align: left;
 }
 
 #cityList {
@@ -71,6 +67,8 @@ header{
   margin: 0;
   border-radius: 5px;
   height: auto;
+  width: 21%;
+  position: absolute;
 }
 
 #citys {
@@ -78,31 +76,30 @@ header{
 }
 
 .descClima {
-    width: 100%;
-    font-size: 15px;
-    text-align: center;
-    margin-top: 0px;
-    margin-bottom: 5px;
-    font-weight: 500;  
-  }
+  width: 100%;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  font-weight: 500;  
+}
 
-  .text-center {
-      text-align: center;
-  }
+.text-center {
+   text-align: center;
+}
 
-  .text-left {
-    text-align: left;
+.text-left {
+  text-align: left;
 }
 
 .color-gris {color:rgb(214 215 218 / 97%);}
-
-  .font-4em {font-size: 4em;}
-  .font-3em {font-size: 3em;}
-  .font-35em {font-size: 3.5em;}
-  .font-2em {font-size: 2em;}
-  .font-25em {font-size: 2.5em;}
-  .font-1em {font-size: 1em;}
-  .font-15em {font-size: 1.5em;}
+.font-4em {font-size: 4em;}
+.font-3em {font-size: 3em;}
+.font-35em {font-size: 3.5em;}
+.font-2em {font-size: 2em;}
+.font-25em {font-size: 2.5em;}
+.font-1em {font-size: 1em;}
+.font-15em {font-size: 1.5em;}
 
 #cityList li a {
   border: 1px solid #ddd;
@@ -123,9 +120,8 @@ header{
 
 #cityList li:hover{background:rgb(214 215 218);}
 
-
 #right{
- display: flex;
+  display: flex;
   flex-direction: column;
   width: 60%;
   flex: 1 1 auto;
@@ -137,14 +133,11 @@ header{
 }
 
 #days{
- display: flex;
-  
+  display: flex;
   flex-wrap: wrap;
- /* flex: 2 1 auto;*/
 }
 
 .day{
-
   margin: 10px;
   padding: 10px 20px;
   border-radius: 10px 10px;
@@ -161,7 +154,6 @@ header{
   display: flex;
   justify-content: flex-start;
   flex-wrap: nowrap;
- 
 }
 
 .highlights {
@@ -204,20 +196,6 @@ h2 {margin-top: 0px;}
   border-radius: 30px;
 }
 
-
-.grados, .fecha {
-  font-size: 4em; 
-  font-weight: 400;
-}
-
-.fecha {font-size: 1.5em;}
-
-.today {
-  border-bottom: 1px solid rgb(214 215 218 / 97%);
-  text-align: center;
-  margin-top: 30px;
-}
-
 .margen-top30 {
   margin-top: 30px;
 }
@@ -235,12 +213,6 @@ h2 {margin-top: 0px;}
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-}
-
-#user img{
-  border-radius: 5px;
-  width: 50px;
-  height: 50px;
 }
 
 #weatone{
@@ -278,8 +250,40 @@ h2 {margin-top: 0px;}
 }
 
 .display-none {display: none;}
+.margin-top15 {margin-top: 15px;}
+.margin-bottom15 {margin-bottom: 15px;}
+.margin-top20 {margin-top: 20px;}
+.margin-bottom20 {margin-bottom: 20px;}
 
+#user img{
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+}
 
+.today {
+  border-bottom: 1px solid rgb(214 215 218 / 97%);
+  text-align: left;
+}
+
+.grados, .fecha {
+  font-size: 5em; 
+  font-weight: 400;
+}
+
+.fecha {font-size: 1.5em;}
+
+.descr {margin:20px 0;}
+
+#sunrs img {width: 15% ;}
+
+.labels {
+  margin-right: 50%;
+  font-size: 15px;
+  font-weight: 500;
+  float: right;
+  margin-top: 12px;
+}
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 580px) {
  
@@ -288,17 +292,20 @@ h2 {margin-top: 0px;}
     flex-direction: unset;
     width: unset;
     
-    }
+  }
+
   body {
     flex-direction: column;
   }
+
   #left {
     display: block;
     width: unset;
     flex-direction: unset;
+    border-top-right-radius: 50px;
     border-bottom-left-radius:unset;
-
   }
+
   #right {
     display: block;
     width: unset;
@@ -322,6 +329,11 @@ h2 {margin-top: 0px;}
   #Highlights2 .highlights {
     width: unset;
   }  
+  .mains {width: unset !important;}
+
+  #cityList {
+    width: 68%;
+  }
 }
 
 
