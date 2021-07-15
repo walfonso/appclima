@@ -38,10 +38,23 @@ function queryDefault (){
   .then(data => {
     var utcDate = data.current.dt;
     var fecha = convertDate(utcDate);
-    console.log(data)
+    console.log(data);
     var sunr = convertTime(data.current.sunrise);
     var suns = convertTime(data.current.sunset);
+    console.log("dias:"+data.daily.length);  
+    for (var i =1; i < data.daily.length; i++) {
+      var fec = convertDate(data.daily[i].dt);
+      var day = "day"+i;
+      day = document.querySelector('#day'+i);
+      console.log(day); 
+      day.innerHTML = `
+        <p class="descClima">${fec.substr(0,3)}</p>
+        <p class="descClima"><img src="https://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}.png"></p>
+        <p class="descClima">${data.daily[i].temp.max.toFixed()}º ${data.daily[i].temp.min.toFixed()}º</p>
+      `
+    }
 
+      
     today.innerHTML = `
       <img src="https://openweathermap.org/img/wn/${data.current.weather['0'].icon}@4x.png"></img> 
       <p><h2 class="grados">${data.current.temp.toFixed()} ºC</h2></p> 
@@ -55,7 +68,6 @@ function queryDefault (){
       <img src="images/rosario.jpg" />
       <div id="text" class="text"><h2>Rosario, AR</h2></div>
     `
-
     uvindex.innerHTML = `
       <p class="descClima text-left color-gris ">UV Index</p>
       <p class="descClima text-left font-3em" style="    padding: 20px 0; margin-bottom: 0px;">${data.current.uvi.toFixed()} %</p>
@@ -79,7 +91,6 @@ function queryDefault (){
       <img src="images/sunset.png" alt="Sunset">
       <p class="descClima text-left font-1em" style="    padding: 20px 0; margin-bottom: 0px;">${suns}</p>
     `
-
     humidity.innerHTML = `
       <p class="descClima text-left color-gris ">Humidity</p>
       <p class="descClima text-left font-3em" style="    padding: 20px 0; margin-bottom: 0px;">${data.current.humidity.toFixed()} %</p>
@@ -189,9 +200,8 @@ function convertDate(UnixTime){
   weekday[4] = "Thursday";
   weekday[5] = "Friday";
   weekday[6] = "Saturday";
-
-  console.log("Unix Timestamp:",unixTimestamp)
-  console.log("Date Timestamp:",date.getTime())
+//  console.log("Unix Timestamp:",unixTimestamp)
+//  console.log("Date Timestamp:",date.getTime())
   var day = weekday[date.getDay()];
   var time = date.getHours()+":"+date.getMinutes().toString();
   var fecha= day+" "+time;
@@ -203,8 +213,8 @@ function convertDate(UnixTime){
 function convertTime(UnixTime){
   var unixTimestamp = UnixTime;
   var date = new Date(unixTimestamp*1000);
-  console.log("Unix Timestamp:",unixTimestamp)
-  console.log("Date Timestamp:",date.getTime())
+  //console.log("Unix Timestamp:",unixTimestamp)
+  //console.log("Date Timestamp:",date.getTime())
   var time = date.getHours()+":"+date.getMinutes().toString();
   return time;  
 }
