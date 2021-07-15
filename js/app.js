@@ -5,11 +5,13 @@ var citys = document.querySelector('#citys');
 var text = document.querySelector('#text');
 var imgcity = document.querySelector('#imgcity');
 var weat = document.querySelector('#weat');
+var weatone = document.querySelector('#weatone');
 var humidity = document.querySelector('#humidity');
 var visibility = document.querySelector('#visibility');
 var sunrs = document.querySelector('#sunrs');
 var windStatus = document.querySelector('#windStatus');
 var uvindex = document.querySelector('#uvindex');
+var airquality = document.querySelector('#airquality');
 
 // Carga datos del usuario
 function queryUser() {
@@ -59,8 +61,12 @@ function queryDefault() {
       <p><h2 class="fecha">${fecha}</h2></p> 
     `
       weat.innerHTML = `
-      <img src="https://openweathermap.org/img/wn/${data.current.weather['0'].icon}.png"></img> </p>
+      <img src="https://openweathermap.org/img/wn/${data.current.weather['0'].icon}.png"></img>
       <p>${data.current.weather['0'].description}</p>
+    `
+     weatone.innerHTML = `
+      <img src="images/rain.png"></img> 
+      <p>Rain: ${data.daily['0'].pop}%</p>
     `
       imgcity.innerHTML = `
       <img src="images/rosario.jpg" />
@@ -68,15 +74,16 @@ function queryDefault() {
     `
       uvindex.innerHTML = `
       <p class="descClima text-left color-gris ">UV Index</p>
-      <p class="descClima text-left font-3em" style="    padding: 20px 0; margin-bottom: 0px;">${data.current.uvi.toFixed()} %</p>
-      <div class="">
-        <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Normal <img src="images/normal.png" alt="Normal"
-          style="width: 20px;vertical-align: bottom;">
+      <div>
+        <img src="images/uvi.png" alt="Sunset">
       </div>
+      <p class="descClima text-left font-3em" style="    padding: 20px 0; margin-bottom: 0px; text-align: center;
+       padding: 20px 0; margin-bottom: 0px;">${data.current.uvi.toFixed()}</p>
+     
     `
       windstatus.innerHTML = `
-      <p class="descClima text-left color-gris ">wind Status</p>
-      <p class="descClima text-left font-3em" style="    padding: 20px 0; margin-bottom: 0px;">${data.current.wind_speed} Km/h</p>
+      <p class="descClima text-left color-gris ">Wind Status</p>
+      <p class="descClima text-left font-3em" style="padding: 20px 0; margin-bottom: 0px;">${data.current.wind_speed} Km/h</p>
       <div class="">
         <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Normal <img src="images/normal.png" alt="Normal"
           style="width: 20px;vertical-align: bottom;">
@@ -91,20 +98,30 @@ function queryDefault() {
     `
       humidity.innerHTML = `
       <p class="descClima text-left color-gris ">Humidity</p>
-      <p class="descClima text-left font-3em" style="    padding: 20px 0; margin-bottom: 0px;">${data.current.humidity.toFixed()} %</p>
+      <p class="descClima text-left font-3em" style="padding: 20px 0; margin-bottom: 0px;">${data.current.humidity.toFixed()} %</p>
       <div class="">
         <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Normal <img src="images/normal.png" alt="Normal"
           style="width: 20px;vertical-align: bottom;">
       </div>
     `
       visibility.innerHTML = `
-      <p class="descClima text-left color-gris ">visibility</p>
-      <p class="descClima text-left font-3em" style="    padding: 20px 0; margin-bottom: 0px;">${data.current.visibility.toFixed()} m</p>
+      <p class="descClima text-left color-gris ">Visibility</p>
+      <p class="descClima text-left font-3em" style="padding: 20px 0; margin-bottom: 0px;">${data.current.visibility.toFixed()} m</p>
       <div class="">
         <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Normal <img src="images/normal.png" alt="Normal"
           style="width: 20px;vertical-align: bottom;">
       </div>
     `
+      airquality.innerHTML = `
+      <p class="descClima text-left color-gris ">Air Quality</p>
+      <p class="descClima text-left font-3em" style="padding: 20px 0; margin-bottom: 0px;">${data.current.pressure} Hpa</p>
+      <div class="">
+        <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Unhealthy <img src="images/mal.png" alt="Normal"
+        style="width: 20px;vertical-align: bottom;">
+      </div>
+    `
+
+
     })
 };
 //
@@ -146,7 +163,7 @@ function queryClima(lat, lon) {
     `
       imgcity.innerHTML = `
       <img src="images/rosario.jpg" />
-      <div id="text" class="text"><h2>Rosario, AR</h2></div>
+      <div id="text" class="text"><h2>${city}</h2></div>
     `
       uvindex.innerHTML = `
       <p class="descClima text-left color-gris ">UV Index</p>
@@ -157,8 +174,8 @@ function queryClima(lat, lon) {
       </div>
     `
       windstatus.innerHTML = `
-      <p class="descClima text-left color-gris ">wind Status</p>
-      <p class="descClima text-left font-3em" style="    padding: 20px 0; margin-bottom: 0px;">${data.current.wind_speed} Km/h</p>
+      <p class="descClima text-left color-gris ">Wind Status</p>
+      <p class="descClima text-left font-3em" style="padding: 20px 0; margin-bottom: 0px;">${data.current.wind_speed} Km/h</p>
       <div class="">
         <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Normal <img src="images/normal.png" alt="Normal"
           style="width: 20px;vertical-align: bottom;">
@@ -173,7 +190,7 @@ function queryClima(lat, lon) {
     `
       humidity.innerHTML = `
       <p class="descClima text-left color-gris ">Humidity</p>
-      <p class="descClima text-left font-3em" style="    padding: 20px 0; margin-bottom: 0px;">${data.current.humidity.toFixed()} %</p>
+      <p class="descClima text-left font-3em" style="padding: 20px 0; margin-bottom: 0px;">${data.current.humidity.toFixed()} %</p>
       <div class="">
         <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Normal <img src="images/normal.png" alt="Normal"
           style="width: 20px;vertical-align: bottom;">
@@ -183,8 +200,17 @@ function queryClima(lat, lon) {
       <p class="descClima text-left color-gris ">visibility</p>
       <p class="descClima text-left font-3em" style="    padding: 20px 0; margin-bottom: 0px;">${data.current.visibility.toFixed()} m</p>
       <div class="">
-        <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Normal <img src="images/normal.png" alt="Normal"
+        <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Average <img src="images/triste.png" alt="Normal"
           style="width: 20px;vertical-align: bottom;">
+      </div>
+    `
+
+     airquality.innerHTML = `
+      <p class="descClima text-left color-gris ">Air Quality</p>
+      <p class="descClima text-left font-3em" style="padding: 20px 0; margin-bottom: 0px;">${data.current.pressure} Hpa</p>
+      <div class="">
+        <p style="margin-top: 0px; font-weight: 500; font-size: 1em">Unhealthy <img src="images/mal.png" alt="Normal"
+        style="width: 20px;vertical-align: bottom;">
       </div>
     `
     })
